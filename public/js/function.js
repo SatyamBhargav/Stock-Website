@@ -34,7 +34,7 @@ function callvalue() {
 
     if (stockname.value == 'Paytm') {
       node.innerHTML = '<div class="card">' +
-      '<img class="card-img-top" src="/Asset/Paytm.png" alt="Card image cap">' +
+      '<img class="card-img-top" src="./images/Paytm.png" alt="Card image cap">' +
       '<div class="card-body">' +
       '<h5 class="card-title"> One 97 Communications Ltd </h5>' +
       '<p class="card-text">Quantity :    ' + quantity.value + '</p>' + 
@@ -48,7 +48,7 @@ function callvalue() {
       '</div>'
     }else if (stockname.value == 'Zomato') {
       node.innerHTML = '<div class="card">' +
-      '<img class="card-img-top" src="/Asset/Zomato.png" alt="Card image cap">' +
+      '<img class="card-img-top" src="./images/Zomato.png" alt="Card image cap">' +
       '<div class="card-body">' +
       '<h5 class="card-title"> Zomato Ltd </h5>' +
       '<p class="card-text">Quantity :    ' + quantity.value + '</p>' + 
@@ -61,7 +61,7 @@ function callvalue() {
       '</div>'
     }else if (stockname.value == 'Sail') {
       node.innerHTML = '<div class="card">' +
-      '<img class="card-img-top" src="/Asset/sail.png" alt="Card image cap">' +
+      '<img class="card-img-top" src="./images/sail.png" alt="Card image cap">' +
       '<div class="card-body">' +
       '<h5 class="card-title"> Steel Authority of India Ltd </h5>' +
       '<p class="card-text">Quantity :    ' + quantity.value + '</p>' + 
@@ -74,7 +74,7 @@ function callvalue() {
       '</div>'
     }else if (stockname.value == 'Mrf') {
       node.innerHTML = '<div class="card">' +
-      '<img class="card-img-top" src="/Asset/mrf.png" alt="Card image cap">' +
+      '<img class="card-img-top" src="./images/mrf.png" alt="Card image cap">' +
       '<div class="card-body">' +
       '<h5 class="card-title">  MRF Ltd </h5>' +
       '<p class="card-text">Quantity :    ' + quantity.value + '</p>' + 
