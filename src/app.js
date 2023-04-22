@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const hbs=require("hbs");
+const hbs = require("hbs");
 
 require("./db/conn");
 
@@ -13,10 +13,9 @@ const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
 const partial_path = path.join(__dirname, "../templates/partials");
 
-
 app.use(express.static(static_path));
-app.set("view engine","hbs");
-app.set("views",template_path);
+app.set("view engine", "hbs");
+app.set("views", template_path);
 hbs.registerPartials(partial_path);
 
 app.use(express.json());
@@ -45,17 +44,17 @@ app.post("/register.hbs", async (req, res) => {
     const password = req.body.password;
     const cpassword = req.body.confirm_password;
     if (password === cpassword) {
-      const registerUser = new Register(
-        {
+      const registerUser = new Register({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         confirm_password: cpassword,
-        });
+      });
       const registered = await registerUser.save();
-      res.status(201).render("index");
+      res.status(201).render("index", { message: "Account Created" });
     } else {
-      req.send("Password not matching");
+      console.log("Passwords do not match!");
+      res.status(201).render("register", { alert: "Password not matching" });
     }
   } catch (error) {
     res.status(400).send(error);
