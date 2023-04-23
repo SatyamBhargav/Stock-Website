@@ -96,6 +96,7 @@
             <div class="overlay"></div>
             <div class="content">
                 <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <form action="/trade.hbs" method="post">
                 <select name="stocks" id="stocks">
                     <option value="Paytm">Paytm</option>
                     <option value="Zomato">Zomato</option>
@@ -104,8 +105,9 @@
                 </select><br>
                 <input type="text1" name="quantity" id="quantity" placeholder="Quantity"><br>
                 <input type="text1" name="price" id="buyprice" placeholder="Buy Price"><br>
-                <input type="text1" name="current price" id="currentprice" placeholder="Current Value"><br>
-                <button class="btn2" onclick="callvalue()"><i class="fa fa-plus"></i></button>
+                <input type="text1" name="current_price" id="currentprice" placeholder="Current Value"><br>
+                <button class="btn2" type="submit" onclick="callvalue()"><i class="fa fa-plus"></i></button>
+                </form>
             </div>
         </div>
     </div>

@@ -8,6 +8,8 @@ require("./db/conn");
 const port = process.env.PORT || 8000;
 
 const Register = require("./models/registers");
+// const CurrentPrice = require("./models/currentprice");
+const StockDetail = require("./models/stockdetail");
 
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
@@ -34,8 +36,42 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.get("/stock", (req, res) => {
+  res.render("stock");
+});
+
 app.get("*", (req, res) => {
   res.send("404 Error Page");
+});
+
+//create stock details in database
+app.post("/trade.hbs", async (req, res) => {
+  try {
+    const stocktest = new StockDetail({
+      stocks: req.body.stocks,
+      quantity: req.body.quantity,
+      price: req.body.price,
+      current_price: req.body.current_price,
+    });
+    const uploaded = await stocktest.save();
+    // res.status(201).render("trade");
+    
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+//create stock price in database
+app.post("/stock.hbs", async (req, res) => {
+  try {
+    const stockPrice = new CurrentPrice({
+      stockname: req.body.stockname,
+      currentvalue: req.body.currentvalue,
+    });
+    const uploaded = await stockPrice.save();
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 // create user in database
