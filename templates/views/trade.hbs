@@ -30,11 +30,37 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/function.js"></script>
-    <title>Stock Portfolio</title>
+    <title>Stock Buddy</title>
     </script>
 </head>
 
 <body bgcolor="f5f5f5">
+    <div class="navigation">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="/images/Logo (1).png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Stock Buddy
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Export to Excel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        <button class="btn" onclick="togglePopup()"><i class="fa fa-plus"></i></button>
+        </nav>
+
+
+    </div>
 
     <!--    Scrolling Bar -->
 
@@ -83,51 +109,45 @@
     <!-- start-->
     <hr style="margin-left: -20%;">
     <div class="top">
-        <input type="text" id="ss" placeholder="Search Stock">
-        <select name="currency" id="currency">
-            <option value="USD">American USD</option>
-            <option value="INR">Indian Rupees</option>
-            <option value="YEN">Japanese Yen</option>
-            <option value="EURO">Euro</option>
-        </select>
-        <i class="fa fa-book"></i><input type="button" value="Export to Excel" class="ete">
-        <button class="btn" onclick="togglePopup()"><i class="fa fa-plus"></i></button>
+
         <div class="popup" id="popup-1">
             <div class="overlay"></div>
             <div class="content">
                 <div class="close-btn" onclick="togglePopup()">&times;</div>
                 <form action="/trade.hbs" method="post">
-                <select name="stocks" id="stocks">
-                    <option value="Paytm">Paytm</option>
-                    <option value="Zomato">Zomato</option>
-                    <option value="Sail">Sail</option>
-                    <option value="Mrf">Mrf</option>
-                </select><br>
-                <input type="text1" name="quantity" id="quantity" placeholder="Quantity"><br>
-                <input type="text1" name="price" id="buyprice" placeholder="Buy Price"><br>
-                <input type="text1" name="current_price" id="currentprice" placeholder="Current Value"><br>
-                <button class="btn2" type="submit" onclick="callvalue()"><i class="fa fa-plus"></i></button>
+                    <select name="stocks" id="stocks">
+                        <option value="Paytm">Paytm</option>
+                        <option value="Zomato">Zomato</option>
+                        <option value="Sail">Sail</option>
+                        <option value="Mrf">Mrf</option>
+                    </select><br>
+                    <input type="text1" name="quantity" id="quantity" placeholder="Quantity"><br>
+                    <input type="text1" name="price" id="buyprice" placeholder="Buy Price"><br>
+                    <input type="text1" name="current_price" id="currentprice" placeholder="Current Value"><br>
+                    <button class="btn2" type="submit" onclick="callvalue()"><i class="fa fa-plus"></i></button>
                 </form>
             </div>
         </div>
     </div>
     <div class="middle" style="background-color: rgba(255, 255, 255, 0.801);">
         <div class="container-fluid">
-        <label for="Invested Amount">Invested Amount</label>
-        <label for="Profit / Loss">Profit / Loss</label>
-        <label for="Total Portfolio value">Total Portfolio value</label>
-        <label for="Total Profit/Loss %">Total Profit/Loss %</label></div>
+            <label for="Invested Amount">Invested Amount</label>
+            <label for="Profit / Loss">Profit / Loss</label>
+            <label for="Total Portfolio value">Total Portfolio value</label>
+            <label for="Total Profit/Loss %">Total Profit/Loss %</label>
+        </div>
         <br><br><br>
         <div class="container-fluid" style="margin-top: -3%; margin-left: 2%; margin-bottom: -3%;">
-        <label for="ia" id="ia">₹0.00</label>
-        <label for="pl" id="pl">₹0.00</label>
-        <label for="tp" id="tp">₹0.00</label>
-        <label for="tpl" id="tpl">0%</label></div>
+            <label for="ia" id="ia">₹0.00</label>
+            <label for="pl" id="pl">₹0.00</label>
+            <label for="tp" id="tp">₹0.00</label>
+            <label for="tpl" id="tpl">0%</label>
+        </div>
         <br><br><br>
         <hr style="margin-right: 2%">
         <div class="showvalue">
             <div style="text-align: center; font-weight: bold; font-size: large;">
-            <label for="stockname">Stock Details</label>
+                <label for="stockname">Stock Details</label>
             </div>
         </div> <br>
         <div id="container" class="card-deck" style="margin-left: 5%;"></div>
