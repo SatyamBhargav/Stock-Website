@@ -1,22 +1,23 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const hbs=require("hbs");
+const hbs = require("hbs");
 
 require("./db/conn");
 
 const port = process.env.PORT || 8000;
 
 const Register = require("./models/registers");
+// const CurrentPrice = require("./models/currentprice");
+const StockDetail = require("./models/stockdetail");
 
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
 const partial_path = path.join(__dirname, "../templates/partials");
 
-
 app.use(express.static(static_path));
-app.set("view engine","hbs");
-app.set("views",template_path);
+app.set("view engine", "hbs");
+app.set("views", template_path);
 hbs.registerPartials(partial_path);
 
 app.use(express.json());
@@ -35,8 +36,42 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.get("/stock", (req, res) => {
+  res.render("stock");
+});
+
 app.get("*", (req, res) => {
   res.send("404 Error Page");
+});
+
+//create stock details in database
+app.post("/trade.hbs", async (req, res) => {
+  try {
+    const stocktest = new StockDetail({
+      stocks: req.body.stocks,
+      quantity: req.body.quantity,
+      price: req.body.price,
+      current_price: req.body.current_price,
+    });
+    const uploaded = await stocktest.save();
+    // res.status(201).render("trade");
+    
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+//create stock price in database
+app.post("/stock.hbs", async (req, res) => {
+  try {
+    const stockPrice = new CurrentPrice({
+      stockname: req.body.stockname,
+      currentvalue: req.body.currentvalue,
+    });
+    const uploaded = await stockPrice.save();
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 // create user in database
@@ -45,17 +80,17 @@ app.post("/register.hbs", async (req, res) => {
     const password = req.body.password;
     const cpassword = req.body.confirm_password;
     if (password === cpassword) {
-      const registerUser = new Register(
-        {
+      const registerUser = new Register({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         confirm_password: cpassword,
-        });
+      });
       const registered = await registerUser.save();
-      res.status(201).render("index");
+      res.status(201).render("index", { message: "Account Created" });
     } else {
-      req.send("Password not matching");
+      console.log("Passwords do not match!");
+      res.status(201).render("register", { alert: "Password not matching" });
     }
   } catch (error) {
     res.status(400).send(error);
