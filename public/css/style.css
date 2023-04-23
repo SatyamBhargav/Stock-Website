@@ -17,13 +17,7 @@
   color: green;
 }
 
-/* @media (min-width: 1920px){ */
-/* .middle{
-  margin-top: 1%;
-  padding: 2% 0 3% 2%;
-} */
 label[for="Invested Amount"],
-  [for="Profit / Loss"],
   [for="Total Portfolio value"],
   [for="Total Profit/Loss %"]{
   
@@ -32,21 +26,41 @@ border-radius: 5px;
 border: none;
 background-color: #d3d3d3;
 font-weight: bold;
-padding: 0.5% 5% 0.5% 5%;
-margin-left: 5%;
-margin-right: 2%;
-margin-top: 2%;
+font-size: 1.1vw;
+padding: 3% 15% 3% 15%;
+margin-bottom: 10%;
 }
+
+label[for="Profit / Loss"]{
+  
+border: 1px solid;
+border-radius: 5px;
+border: none;
+background-color: #d3d3d3;
+font-weight: bold;
+font-size: 1.1vw;
+margin-bottom: 10%;
+padding: 3% 20% 3% 20%;
+margin-left: 5%;
+}
+
+
+
+
+
 label[for="ia"]
 {
+
 border: 8px solid;
 border-radius: 5px;
 border-color: white;
 box-shadow: 2px 2px;
 background-color: #deb887;
+font-size: 1.1vw;
 font-weight: bold;
-padding: 0.5% 5% 0.5% 5%;
-margin-left: 5%;
+padding: 2% 15% 2% 15%;
+
+margin-left: 13%;
 /* margin-top: 20%; */
 }
 label[for="pl"]
@@ -55,9 +69,12 @@ border: 8px solid;
 border-radius: 5px;
 border-color: white;
 box-shadow: 2px 2px;
+font-size: 1.1vw;
 font-weight: bold;
-padding: 0.5% 5% 0.5% 5%;
-margin-left: 9%;
+padding: 2% 15% 2% 15%;
+margin-left: 18%;
+
+/* margin-left: 1%; */
 /* margin-top: 20%; */
 }
 label[for="tp"]
@@ -67,9 +84,13 @@ border-radius: 5px;
 border-color: white;
 box-shadow: 2px 2px;
 background-color: #deb887;
+font-size: 1.1vw;
 font-weight: bold;
-padding: 0.5% 5% 0.5% 5%;
-margin-left: 10%;
+padding: 2% 15% 2% 15%;
+
+margin-left: 20%;
+
+/* margin-left: 10%; */
 /* margin-top: 20%; */
 }
 label[for="tpl"]
@@ -79,9 +100,13 @@ border-radius: 5px;
 border-color: white;
 box-shadow: 2px 2px;
 background-color: #c7b42c;
+font-size: 1.1vw;
 font-weight: bold;
-padding: 0.5% 5% 0.5% 5%;
-margin-left: 11%;
+padding: 2% 15% 2% 15%;
+
+margin-left: 20%;
+
+/* margin-left: 11%; */
 /* margin-top: 20%; */
 }
 
@@ -187,22 +212,4 @@ padding: 0;
 width: 100%;
 height: 10vw;
 object-fit: cover;
-}
-/* 1205px */
-@media (min-width: 1419px) { 
-
-  label[for="Invested Amount"],
-  [for="Profit / Loss"],
-  [for="Total Portfolio value"],
-  [for="Total Profit/Loss %"]{
-  
-border: 1px solid;
-border-radius: 5px;
-border: none;
-background-color: #d3d3d3;
-font-weight: bold;
-padding: 0.5% 5% 0.5% 5%;
-margin-left: 3.5%;
-margin-top: 2%;
-}
 }
