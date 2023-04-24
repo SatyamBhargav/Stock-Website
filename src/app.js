@@ -5,11 +5,16 @@ const hbs = require("hbs");
 
 require("./db/conn");
 
+//importing json2csv and fs pkg
+const Json2csvParser = require("json2csv").Parser;
+const fs = require("fs");
+
 const port = process.env.PORT || 8000;
 
 const Register = require("./models/registers");
 // const CurrentPrice = require("./models/currentprice");
 const StockDetail = require("./models/stockdetail");
+const { Parser } = require("json2csv");
 
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
@@ -38,6 +43,33 @@ app.get("/register", (req, res) => {
 
 app.get("/stock", (req, res) => {
   res.render("stock");
+});
+
+
+app.get("/export", async (req, res) => {
+  res.render("export");
+  
+  const userJsonData = await StockDetail.find({});
+  const fields = [{
+    label: 'Name',
+    value: 'stocks'
+  },{
+    label: 'Quantity',
+    value: 'quantity'
+  },{
+    label: 'Price',
+    value: 'price'
+  },{
+    label: 'Current',
+    value: 'current_price'
+  }];
+  const json2csvParser = new Json2csvParser({fields});
+  const csv = json2csvParser.parse(userJsonData);
+  // console.log(csv);
+  fs.writeFile("stock_export.csv", csv, function (error) {
+    if (error) throw error;
+    console.log("CSV file with data created succesfully!");
+  });
 });
 
 app.get("*", (req, res) => {
@@ -111,6 +143,7 @@ app.post("/index.hbs", async (req, res) => {
     res.status(400).send("Invalid email or password");
   }
 });
+
 
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
